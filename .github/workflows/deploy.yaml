@@ -11,7 +11,7 @@ on:
       - 'local/'
 
 jobs:
-  deploy-prod-run-once:
+  deploy-dev-run-once:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -19,12 +19,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: nais/deploy/actions/deploy@v2
         env:
-          CLUSTER: prod-gcp
-          RESOURCE: nais/soda-config.yaml,nais/soda-checks-prod.yaml,nais/naisjob.yaml
-          VARS: nais/prod-run-once.yaml
+          CLUSTER: dev-gcp
+          RESOURCE: nais/soda-config.yaml,nais/soda-checks-dev.yaml,nais/naisjob.yaml
+          VARS: nais/dev-run-once.yaml
 
-  deploy-prod-run-scheduled:
-    needs: [deploy-prod-run-once]
+  deploy-dev-run-scheduled:
+    needs: [deploy-dev-run-once]
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -32,6 +32,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: nais/deploy/actions/deploy@v2
         env:
-          CLUSTER: prod-gcp
-          RESOURCE: nais/soda-config.yaml,nais/soda-checks-prod.yaml,nais/naisjob.yaml
-          VARS: nais/prod.yaml
+          CLUSTER: dev-gcp
+          RESOURCE: nais/soda-config.yaml,nais/soda-checks-dev.yaml,nais/naisjob.yaml
+          VARS: nais/dev.yaml

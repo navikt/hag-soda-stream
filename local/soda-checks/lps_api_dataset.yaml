@@ -1,0 +1,4 @@
+checks for public_inntektsmelding:
+  - row_count = 0:
+      filter: status = 'MOTTATT' AND mottatt_event < TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 65 MINUTE)
+      name: "Det finnes rader med status MOTTATT eldre enn 65 minutter"

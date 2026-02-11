@@ -2,9 +2,9 @@ apiVersion: nais.io/v1
 kind: Naisjob
 metadata:
   labels:
-    team: flex
-  name: flex-bigquery-soda{{#if cron.schedule}}{{else}}-run-on-deploy{{/if}}
-  namespace: flex
+    team: helsearbeidsgiver
+  name: hag-bigquery-soda{{#if cron.schedule}}{{else}}-run-on-deploy{{/if}}
+  namespace: helsearbeidsgiver
 spec:
   image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda:2026.02.04-14.44-7e95b17
   accessPolicy:
