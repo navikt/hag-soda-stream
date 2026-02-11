@@ -1,4 +1,4 @@
-# hag-soda-stream
+# hag-soda-stream 
 Koden er hentet fra [flex-bigquery-soda](https://github.com/navikt/flex-bigquery-soda), og er tilpasset for team helsearbeidsgiver.
 
 Bygger på [nada-soda](https://github.com/navikt/nada-soda) og er tungt inspirert av, og har stålet mye fra, [helse-styringsinfo-kvalitetssjekk](https://github.com/navikt/helse-styringsinfo-kvalitetssjekk).
