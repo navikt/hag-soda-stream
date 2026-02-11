@@ -3,7 +3,7 @@ kind: Naisjob
 metadata:
   labels:
     team: helsearbeidsgiver
-  name: hag-bigquery-soda{{#if cron.schedule}}{{else}}-run-on-deploy{{/if}}
+  name: hag-soda-stream{{#if cron.schedule}}{{else}}-run-on-deploy{{/if}}
   namespace: helsearbeidsgiver
 spec:
   image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda:2026.02.04-14.44-7e95b17
