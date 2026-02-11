@@ -7,5 +7,6 @@ data:
   config.yaml: |
     data_source lps_api_dataset:
       type: bigquery
-      project_id: helsearbeidsgiver-dev-6d06
+      connection:
+      project_id: {{ gcp.project_id }}
       dataset: lps_api_dataset
