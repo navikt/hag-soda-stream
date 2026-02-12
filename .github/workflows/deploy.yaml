@@ -1,37 +1,27 @@
-name: deploy-jobs
+name: build, push and deploy
 on:
-  workflow_dispatch:
   push:
     branches:
       - 'main'
     paths-ignore:
-      - 'README.md'
-      - 'LICENSE.md'
-      - '.gitignore'
-      - 'local/'
+      - 'Dockerfile.dummy'
+      - '.github/workflows/bump_soda_image.yaml'
+  workflow_run:
+    workflows:
+      - Update Soda Image Tag
+    types:
+      - completed
 
 jobs:
-  deploy-dev-run-once:
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     permissions:
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v2
+      - uses: actions/checkout@v6
+      - name: Deploy to prod-gcp
+        uses: nais/deploy/actions/deploy@v2
         env:
-          CLUSTER: dev-gcp
-          RESOURCE: nais/soda-config.yaml,nais/soda-checks-dev.yaml,nais/naisjob.yaml
-          VARS: nais/dev-run-once.yaml
-
-  deploy-dev-run-scheduled:
-    needs: [deploy-dev-run-once]
-    runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: nais/deploy/actions/deploy@v2
-        env:
-          CLUSTER: dev-gcp
-          RESOURCE: nais/soda-config.yaml,nais/soda-checks-dev.yaml,nais/naisjob.yaml
-          VARS: nais/dev.yaml
+          CLUSTER: prod-gcp
+          RESOURCE: .nais/soda-config.yaml,.nais/soda-checks.yaml,.nais/naisjob.yaml
