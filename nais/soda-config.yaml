@@ -7,6 +7,5 @@ data:
   config.yaml: |
     data_source lps_api_dataset:
       type: bigquery
-      connection:
       project_id: {{ gcp.project_id }}
       dataset: lps_api_dataset
