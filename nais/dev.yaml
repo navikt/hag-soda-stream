@@ -3,4 +3,4 @@ gcp:
 cron:
   schedule: '40 8 * * 1-5'
 slack:
-  channel: "#soda-test"
+  channel: "#helse-arbeidsgiver-alerts-dev"
