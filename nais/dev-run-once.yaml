@@ -1,4 +1,4 @@
 gcp:
   project_id: helsearbeidsgiver-dev-6d06
 slack:
-  channel: "#helse-arbeidsgiver-alerts-dev"
+  channel: "#soda-test"
