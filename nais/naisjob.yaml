@@ -3,7 +3,7 @@ kind: Naisjob
 metadata:
   labels:
     team: helsearbeidsgiver
-  name: hag-soda-stream{{#if cron.schedule}}{{else}}-run-on-deploy{{/if}}
+  name: hag-soda-stream
   namespace: helsearbeidsgiver
 spec:
   image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda:2026.02.09-09.48-d8b0c1f
@@ -21,9 +21,8 @@ spec:
       value: "{{ slack.channel }}"
     - name: NOTIFY_OK_SCAN_STATUS
       value: "true"
-  {{#if cron.schedule}}
-  schedule: {{ cron.schedule }}
-  {{/if}}
+  schedule: '28 05 * * 1-5'
+
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
   backoffLimit: 1
