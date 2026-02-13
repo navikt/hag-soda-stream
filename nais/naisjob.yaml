@@ -3,7 +3,7 @@ kind: Naisjob
 metadata:
   labels:
     team: helsearbeidsgiver
-  name: hag-soda-stream
+  name: hag-soda-stream{{#if cron.schedule}}{{else}}-run-on-deploy{{/if}}
   namespace: helsearbeidsgiver
 spec:
   image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda:2026.02.09-09.48-d8b0c1f
@@ -18,11 +18,12 @@ spec:
     - name: SODA_CHECKS_FOLDER
       value: /var/run/configmaps/soda-checks
     - name: SLACK_CHANNEL
-      value: "#helse-arbeidsgiver-alerts-dev"
+      value: "{{ slack.channel }}"
     - name: NOTIFY_OK_SCAN_STATUS
       value: "true"
-  schedule: '45 11 * * 1-5'
-
+  {{#if cron.schedule}}
+  schedule: {{ cron.schedule }}
+  {{/if}}
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
   backoffLimit: 1
@@ -35,20 +36,20 @@ spec:
     - resource:
         apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
         kind: Project
-        name: helsearbeidsgiver-dev-6d06
+        name: {{ gcp.project_id }}
       role: roles/bigquery.readSessionUser
     - resource:
         apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
         kind: Project
-        name: helsearbeidsgiver-dev-6d06
+        name: {{ gcp.project_id }}
       role: roles/bigquery.dataViewer
     - resource:
         apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
         kind: Project
-        name: helsearbeidsgiver-dev-6d06
+        name: {{ gcp.project_id }}
       role: roles/bigquery.jobUser
     - resource:
         apiVersion: resourcemanager.cnrm.cloud.google.com/v1beta1
         kind: Project
-        name: helsearbeidsgiver-dev-6d06
+        name: {{ gcp.project_id }}
       role: roles/bigquery.connectionUser
