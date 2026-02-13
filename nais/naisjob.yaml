@@ -21,7 +21,6 @@ spec:
       value: "#helse-arbeidsgiver-alerts-dev"
     - name: NOTIFY_OK_SCAN_STATUS
       value: "true"
-  schedule: '45 06 * * 1-5'
 
   failedJobsHistoryLimit: 1
   successfulJobsHistoryLimit: 1
