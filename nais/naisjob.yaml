@@ -6,6 +6,8 @@ metadata:
   name: hag-soda-stream{{#if cron.schedule}}{{else}}-run-on-deploy{{/if}}
   namespace: helsearbeidsgiver
 spec:
+  startup:
+    initialDelay: 10
   image: europe-north1-docker.pkg.dev/nais-management-233d/nada/nada-soda:2026.02.09-09.48-d8b0c1f
   accessPolicy:
     outbound:
