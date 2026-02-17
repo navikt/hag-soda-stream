@@ -13,9 +13,6 @@ on:
     types:
       - completed
 
-concurrency:
-  group: deploy-dev-gcp
-  cancel-in-progress: false
 
 jobs:
   deploy-dev-run-once:
