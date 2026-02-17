@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - 'main'
+      - 'dev/**'
     paths-ignore:
       - 'Dockerfile.dummy'
       - '.github/workflows/bump_soda_image.yaml'
@@ -12,9 +13,10 @@ on:
     types:
       - completed
 
+
 jobs:
-  deploy:
-    name: Deploy
+  deploy-dev-run-once:
+    name: Deploy run once
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -25,3 +27,18 @@ jobs:
         env:
           CLUSTER: dev-gcp
           RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks-dev.yaml
+          VARS: nais/dev-run-once.yaml
+  deploy-dev-run-scheduled:
+    name: Deploy scheduled
+    needs: deploy-dev-run-once
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Deploy to dev-gcp
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks-dev.yaml
+          VARS: nais/dev.yaml
