@@ -27,3 +27,16 @@ jobs:
           CLUSTER: dev-gcp
           RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks-dev.yaml
           VARS: nais/dev-run-once.yaml
+  deploy-dev-run-scheduled:
+    name: Deploy run once
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Deploy to dev-gcp
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks-dev.yaml
+          VARS: nais/dev.yaml
