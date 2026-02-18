@@ -15,8 +15,8 @@ on:
 
 
 jobs:
-  deploy-dev-run-once:
-    name: Deploy run once
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -27,4 +27,4 @@ jobs:
         env:
           CLUSTER: dev-gcp
           RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks-dev.yaml
-          VARS: nais/dev.yaml
+          VARS: nais/prod.yaml

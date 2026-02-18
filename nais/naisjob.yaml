@@ -22,7 +22,7 @@ spec:
     - name: SLACK_CHANNEL
       value: "{{ slack.channel }}"
     - name: NOTIFY_OK_SCAN_STATUS
-      value: "false"
+      value: "true"
   {{#if cron.schedule}}
   schedule: {{ cron.schedule }}
   {{/if}}
