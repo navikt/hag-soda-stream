@@ -27,4 +27,4 @@ jobs:
         env:
           CLUSTER: prod-gcp
           RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks.yaml
-          VARS: nais/prod.yaml
+          VARS: nais/prod-run-once.yaml

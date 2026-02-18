@@ -1,0 +1,4 @@
+gcp:
+  project_id: helsearbeidsgiver-prod-8a1c
+slack:
+  channel: "#helse-arbeidsgiver-alerts-dev"
