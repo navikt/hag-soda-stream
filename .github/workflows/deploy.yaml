@@ -22,9 +22,9 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v6
-      - name: Deploy to dev-gcp
+      - name: Deploy to prod-gcp
         uses: nais/deploy/actions/deploy@v2
         env:
-          CLUSTER: dev-gcp
-          RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks-dev.yaml
+          CLUSTER: prod-gcp
+          RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks.yaml
           VARS: nais/prod.yaml
