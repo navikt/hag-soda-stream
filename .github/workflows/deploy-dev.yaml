@@ -1,0 +1,29 @@
+name: build, push and deploy
+on:
+  push:
+    branches:
+      - 'dev/**'
+    paths-ignore:
+      - 'Dockerfile.dummy'
+      - '.github/workflows/bump_soda_image.yaml'
+  workflow_run:
+    workflows:
+      - Update Soda Image Tag
+    types:
+      - completed
+
+
+jobs:
+  deploy-dev-gcp:
+    name: Deploy dev-gcp
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Deploy to dev-gcp
+        uses: nais/deploy/actions/deploy@v2
+        env:
+          CLUSTER: dev-gcp
+          RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks.yaml
+          VARS: nais/dev.yaml
