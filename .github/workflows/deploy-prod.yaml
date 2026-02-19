@@ -25,5 +25,5 @@ jobs:
         uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: prod-gcp
-          RESOURCE: nais/soda-config.yaml,nais/naisjob.yaml,nais/soda-checks.yaml
+          RESOURCE: nais/soda-config-prod.yaml,nais/naisjob.yaml,nais/soda-checks.yaml
           VARS: nais/prod.yaml
