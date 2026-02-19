@@ -1,6 +1,6 @@
 gcp:
-  project_id: flex-prod-af40
+  project_id: helsearbeidsgiver-prod-8a1c
 cron:
-  schedule: '40 8 * * 1-5'
+  schedule: '00 * * * *'
 slack:
-  channel: "#spøkelser"
+  channel: "#helse-arbeidsgiver-alerts-dev"
