@@ -3,9 +3,8 @@ on:
   push:
     branches:
       - 'dev/**'
-    paths-ignore:
-      - 'Dockerfile.dummy'
-      - '.github/workflows/bump_soda_image.yaml'
+    paths:
+      - 'nais/**'
   workflow_run:
     workflows:
       - Update Soda Image Tag
