@@ -1,0 +1,3 @@
+checks for lp_api_im_mottatt_65:
+  - row_count = 0:
+      name: "Det finnes rader med status MOTTATT eldre enn 65 minutter"
