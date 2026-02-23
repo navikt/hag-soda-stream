@@ -4,8 +4,7 @@ metadata:
   name: soda-checks
   namespace: helsearbeidsgiver
 data:
-  lps_api_dataset.yaml: |
-    checks for public_inntektsmelding:
-      - row_count = 0: 
-          filter: status = 'MOTTATT' AND mottatt_event < TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 65 MINUTE)
-          name: "Det finnes rader med status MOTTATT eldre enn 65 minutter"
+  soda_dataset.yaml: |
+    checks for lp_api_im_mottatt_65:
+    - row_count = 0:
+        name: "Det finnes rader med status MOTTATT eldre enn 65 minutter"
