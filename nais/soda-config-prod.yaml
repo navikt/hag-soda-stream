@@ -8,4 +8,4 @@ data:
     data_source soda_dataset:
       type: bigquery
       project_id: helsearbeidsgiver-prod-8a1c
-      dataset: lps_api_dataset
+      dataset: soda_dataset
