@@ -1,6 +1,6 @@
 gcp:
   project_id: helsearbeidsgiver-prod-8a1c
 cron:
-  schedule: '40 * * * *'
+  schedule: '50 * * * *'
 slack:
   channel: "#helse-arbeidsgiver-alerts"
