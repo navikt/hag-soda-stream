@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - 'dev/**'
-    paths:
-      - 'nais/**'
   workflow_run:
     workflows:
       - Update Soda Image Tag
