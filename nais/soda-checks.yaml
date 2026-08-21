@@ -11,3 +11,6 @@ data:
     checks for lps_api_bro_mismatch:
       - row_count = 0:
           name: "Det finnes forespørsler i lps_api som ikke har en matchende status i bro"
+    checks for faisu_forlengelser:
+      - row_count = 0:
+          name: "Sykmelding periode er forlenget med ulik grad med flere arbeidsforhold i samme underenhet"
