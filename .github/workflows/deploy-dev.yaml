@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Deploy to dev-gcp
-        uses: nais/deploy/actions/deploy@v2
+        uses: nais/deploy/actions/deploy@v3
         env:
           CLUSTER: dev-gcp
           RESOURCE: nais/soda-config-dev.yaml,nais/naisjob.yaml,nais/soda-checks.yaml
