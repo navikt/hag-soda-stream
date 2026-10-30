@@ -1,0 +1,7 @@
+dataset: soda_dataset/helsearbeidsgiver-dev-6d06/soda_dataset/lp_api_im_mottatt_65
+columns: []
+checks:
+  - row_count:
+      name: "Det finnes rader med status MOTTATT eldre enn 65 minutter"
+      threshold:
+        must_be: 0
