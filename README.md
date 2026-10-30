@@ -36,6 +36,7 @@ prosjekt-ID fra miljøets variabelfil.
 Hvis noen av sjekkene som verifiser at det er streamet data til BigQuery feiler kan status på Datastreams sjekkes med:
 
 ```cmd
+
 # Sett helsearbeidsgiver-dev som prosjekt:
 gcloud config set project <prosjekt-id>
 
