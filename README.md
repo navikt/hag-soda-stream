@@ -37,7 +37,7 @@ Hvis noen av sjekkene som verifiser at det er streamet data til BigQuery feiler 
 
 ```cmd
 # Sett helsearbeidsgiver-dev som prosjekt:
-gcloud config set project helsearbeidsgiver-dev-6d06
+gcloud config set project <prosjekt-id>
 
 # List datastreams:
 gcloud datastream streams list --location=europe-north1 | tr -s ' ' | cut -d ' '  -f1,2
