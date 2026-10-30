@@ -6,6 +6,8 @@ on:
   workflow_run:
     workflows:
       - Update Soda Image Tag
+    branches:
+      - 'dev/**'
     types:
       - completed
 
@@ -13,11 +15,14 @@ on:
 jobs:
   deploy-dev-gcp:
     name: Deploy dev-gcp
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_branch || github.ref_name }}
       - name: Deploy to dev-gcp
         uses: nais/deploy/actions/deploy@v2
         env:

@@ -8,12 +8,15 @@ Koden er hentet fra [flex-bigquery-soda](https://github.com/navikt/flex-bigquery
 I mappen [local/](local/) ligger det filer som kan brukes til å kjøre Soda-sjekker fra lokal maskin. Sjekkene som ligger her er ikke de samme som kjøres av naisjobben, og er i all hovedsak ment for kjøring av tester i forbindelse med utvikling.
 
 
+Sjekkene bruker Soda v4 Data Contracts. Naisjobben kjører NADA sitt
+`nada-soda-contracts`-image, som rapporterer resultater og varsler via NADA Soda.
+Hver tabell har en egen kontrakt med krav om `row_count` lik null.
+
 Før første gang testene kjøres lokalt må poetry konfigureres:
 
 ```sh
-# Sett python versjon:
-poetry env use 3.12
 cd local/
+poetry env use 3.12
 poetry install
 ```
 
@@ -22,6 +25,11 @@ Testene kan deretter kjøres med:
 ```sh
 make run-soda-checks
 ```
+
+Kontraktene ligger i `local/soda-checks/`, og datakilden i
+`local/soda-config/config.yaml`. Lokalt brukes Application Default Credentials
+mot dev-prosjektet. Nais-kontraktene ligger i `nais/soda-checks.yaml`, med
+prosjekt-ID fra miljøets variabelfil.
 
 ## Aksjoner
 
@@ -41,4 +49,5 @@ gcloud datastream streams list --location=europe-north1 | tr -s ' ' | cut -d ' '
 
 ## Ressurser
 
-- [List of SodaCL metrics and checks](https://docs.soda.io/soda-cl/metrics-and-checks.html#list-of-sodacl-metrics-and-checks)
+- [Soda Data Contracts](https://docs.soda.io/reference/contract-language-reference)
+- [NADA Soda](https://github.com/navikt/nada-soda)

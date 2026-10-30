@@ -4,13 +4,27 @@ metadata:
   name: soda-checks
   namespace: helsearbeidsgiver
 data:
-  soda_dataset.yaml: |
-    checks for lp_api_im_mottatt_65:
-      - row_count = 0:
+  lp_api_im_mottatt_65.yaml: |
+    dataset: soda_dataset/{{ gcp.project_id }}/soda_dataset/lp_api_im_mottatt_65
+    columns: []
+    checks:
+      - row_count:
           name: "Det finnes rader med status MOTTATT eldre enn 65 minutter"
-    checks for lps_api_bro_mismatch:
-      - row_count = 0:
+          threshold:
+            must_be: 0
+  lps_api_bro_mismatch.yaml: |
+    dataset: soda_dataset/{{ gcp.project_id }}/soda_dataset/lps_api_bro_mismatch
+    columns: []
+    checks:
+      - row_count:
           name: "Det finnes forespørsler i lps_api som ikke har en matchende status i bro"
-    checks for faisu_forlengelser:
-      - row_count = 0:
+          threshold:
+            must_be: 0
+  faisu_forlengelser.yaml: |
+    dataset: soda_dataset/{{ gcp.project_id }}/soda_dataset/faisu_forlengelser
+    columns: []
+    checks:
+      - row_count:
           name: "Sykmelding periode er forlenget med ulik grad med flere arbeidsforhold i samme underenhet"
+          threshold:
+            must_be: 0
