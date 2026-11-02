@@ -1,0 +1,7 @@
+dataset: soda_dataset/helsearbeidsgiver-dev-6d06/soda_dataset/faisu_forlengelser
+columns: []
+checks:
+  - row_count:
+      name: "Sykmelding periode er forlenget med ulik grad med flere arbeidsforhold i samme underenhet"
+      threshold:
+        must_be: 0

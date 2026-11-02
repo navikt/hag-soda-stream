@@ -5,7 +5,8 @@ metadata:
   namespace: helsearbeidsgiver
 data:
   config.yaml: |
-    data_source soda_dataset:
-      type: bigquery
+    type: bigquery
+    name: soda_dataset
+    connection:
+      use_context_auth: true
       project_id: helsearbeidsgiver-dev-6d06
-      dataset: soda_dataset

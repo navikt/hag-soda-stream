@@ -1,0 +1,7 @@
+dataset: soda_dataset/helsearbeidsgiver-dev-6d06/soda_dataset/lps_api_bro_mismatch
+columns: []
+checks:
+  - row_count:
+      name: "Det finnes forespørsler i lps_api som ikke har en matchende status i bro"
+      threshold:
+        must_be: 0

@@ -8,6 +8,8 @@ on:
   workflow_run:
     workflows:
       - Update Soda Image Tag
+    branches:
+      - 'main'
     types:
       - completed
 
@@ -15,11 +17,14 @@ on:
 jobs:
   deploy-prod-gcp:
     name: Deploy prod-gcp
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     permissions:
       id-token: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_branch || github.ref_name }}
       - name: Deploy to prod-gcp
         uses: nais/deploy/actions/deploy@v2
         env:
